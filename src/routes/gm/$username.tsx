@@ -38,6 +38,7 @@ export const Route = createFileRoute("/gm/$username")({
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const player = (await res.json()) as PlayerResponse;
 
+    let countryName: string | undefined;
     if (player.country) {
       const countryRes = await fetch(player.country, {
         headers: { accept: "application/json" },
@@ -46,11 +47,11 @@ export const Route = createFileRoute("/gm/$username")({
 
       if (countryRes.ok) {
         const countryData = await countryRes.json();
-        player.country = countryData.name;
+        countryName = countryData.name;
       }
     }
 
-    return { player };
+    return { player, countryName };
   },
   component: ProfilePage,
 });
@@ -69,7 +70,10 @@ function fmtDate(epoch?: number) {
 }
 
 function ProfilePage() {
-  const { player } = Route.useLoaderData();
+  const { player, countryName } = Route.useLoaderData() as {
+    player: PlayerResponse;
+    countryName?: string;
+  };
 
   return (
     <div className="max-w-lg mx-auto my-4">
@@ -107,9 +111,7 @@ function ProfilePage() {
             <InfoRow label="Followers" value={player.followers ?? "—"} />
             <InfoRow label="Joined" value={fmtDate(player.joined)} />
 
-            {player.country && (
-              <InfoRow label="Country" value={player.country} />
-            )}
+            <InfoRow label="Country" value={countryName ?? "—"} />
             {player.location && (
               <InfoRow label="Location" value={player.location} />
             )}
