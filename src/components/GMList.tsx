@@ -11,7 +11,7 @@ export default function GMList({ players }: Players) {
           Source: chess.com · {players.length} players
         </p>
       </header>
-      <ul className="grid grid-cols-2 place-items-center gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+      <ul className="grid grid-cols-2 place-items-center gap-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {players.map((u) => (
           <li key={u}>
             <Link to="/gm/$username" params={{ username: u }} preload="intent" className="block">
