@@ -1,5 +1,9 @@
 // Domain types for Chess.com PubAPI and view models used in the app
 
+export type Players = {
+  players: string[];
+};
+
 export type PlayerResponse = {
   url?: string;
   username: string;
