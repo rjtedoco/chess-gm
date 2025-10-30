@@ -83,6 +83,32 @@ function ProfilePage() {
             </div>
           ) : null}
 
+          {stats?.length ? (
+            <div className="mt-4">
+              <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
+                Summary
+              </div>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {stats.map((s) => (
+                  <Card key={s.mode}>
+                    <CardContent className="p-3">
+                      <div className="mb-1 flex items-center gap-2">
+                        <Badge variant="outline">{s.mode}</Badge>
+                      </div>
+                      <div className="text-sm">
+                        Current: {s.last ?? "—"} · Best: {s.best ?? "—"}
+                      </div>
+                      <div className="text-sm text-muted-foreground">
+                        {(s.win ?? 0).toLocaleString()}W · {(s.loss ?? 0).toLocaleString()}L ·{" "}
+                        {(s.draw ?? 0).toLocaleString()}D
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          ) : null}
+
           {games?.recent?.length ? (
             <div className="mt-4">
               <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
@@ -113,31 +139,6 @@ function ProfilePage() {
                             🔗 View Replay
                           </a>
                         </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
-            </div>
-          ) : null}
-          {stats?.length ? (
-            <div className="mt-4">
-              <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
-                Stats
-              </div>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {stats.map((s) => (
-                  <Card key={s.mode}>
-                    <CardContent className="p-3">
-                      <div className="mb-1 flex items-center gap-2">
-                        <Badge variant="outline">{s.mode}</Badge>
-                      </div>
-                      <div className="text-sm">
-                        Current: {s.last ?? "—"} · Best: {s.best ?? "—"}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {(s.win ?? 0).toLocaleString()}W · {(s.loss ?? 0).toLocaleString()}L ·{" "}
-                        {(s.draw ?? 0).toLocaleString()}D
                       </div>
                     </CardContent>
                   </Card>
