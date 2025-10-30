@@ -220,25 +220,6 @@ export function GMProfileLoading() {
         <CardContent>
           <div className="mt-4">
             <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
-              Ongoing
-            </div>
-            <div className="grid gap-3">
-              {Array.from({ length: 2 }).map((_, i) => (
-                <Card key={`ongoing-skel-${i}`}>
-                  <CardContent className="flex items-center justify-between gap-3 p-3">
-                    <div className="space-y-2">
-                      <Skeleton className="h-4 w-48" />
-                      <Skeleton className="h-3 w-64" />
-                    </div>
-                    <Skeleton className="h-9 w-24" />
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-4">
-            <div className="mb-2 text-xs uppercase tracking-wide text-muted-foreground">
               Summary
             </div>
             <div className="grid gap-3 sm:grid-cols-2">
