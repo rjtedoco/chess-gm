@@ -26,7 +26,7 @@ export const Route = createRootRoute({
   pendingComponent: RootLoading,
   errorComponent: RootError,
   component: () => (
-    <div className="min-h-dvh bg-background  text-foreground min-w-screen">
+    <div className="min-h-dvh bg-background text-foreground min-w-screen">
       <div className="mx-auto max-w-6xl px-4 py-8">
         <Outlet />
       </div>
